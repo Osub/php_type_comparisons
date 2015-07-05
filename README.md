@@ -3,8 +3,9 @@ php类型比较和相等检测
 
 
 使用 PHP 函数对变量 $x 进行比较
-表达式	gettype()	empty()	is_null()	isset()	boolean : if($x)
-$x = "";	string	TRUE	FALSE	TRUE	FALSE
+
+|==表达式==|==	gettype()==|==	empty()==|==	is_null()==|==	isset()==|==	boolean : if($x)==|
+|==$x = "";==|==	string==|==	TRUE==|	==FALSE==|==	TRUE==|	==FALSE==|
 $x = null;	NULL	TRUE	TRUE	FALSE	FALSE
 var $x;	NULL	TRUE	TRUE	FALSE	FALSE
 $x is undefined	NULL	TRUE	TRUE	FALSE	FALSE
