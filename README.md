@@ -2,51 +2,175 @@
 php类型比较和相等检测
 
 
-使用 PHP 函数对变量 $x 进行比较
+<table class="doctable table">
+   <caption><strong>使用 PHP 函数对变量 <var class="varname"><var class="varname">$x</var></var> 进行比较</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>表达式</th>
+      <th><span class="function"><a href="function.gettype.php" class="function">gettype()</a></span></th>
+      <th><span class="function"><a href="function.empty.php" class="function">empty()</a></span></th>
+      <th><span class="function"><a href="function.is-null.php" class="function">is_null()</a></span></th>
+      <th><span class="function"><a href="function.isset.php" class="function">isset()</a></span></th>
+      <th><span class="type"><a href="language.types.boolean.php" class="type boolean">boolean</a></span> : <em>if($x)</em></th>
+     </tr>
 
-|==表达式==|==	gettype()==|==	empty()==|==	is_null()==|==	isset()==|==	boolean : if($x)==|
-|==$x = "";==|==	string==|==	TRUE==|	==FALSE==|==	TRUE==|	==FALSE==|
-$x = null;	NULL	TRUE	TRUE	FALSE	FALSE
-var $x;	NULL	TRUE	TRUE	FALSE	FALSE
-$x is undefined	NULL	TRUE	TRUE	FALSE	FALSE
-$x = array();	array	TRUE	FALSE	TRUE	FALSE
-$x = false;	boolean	TRUE	FALSE	TRUE	FALSE
-$x = true;	boolean	FALSE	FALSE	TRUE	TRUE
-$x = 1;	integer	FALSE	FALSE	TRUE	TRUE
-$x = 42;	integer	FALSE	FALSE	TRUE	TRUE
-$x = 0;	integer	TRUE	FALSE	TRUE	FALSE
-$x = -1;	integer	FALSE	FALSE	TRUE	TRUE
-$x = "1";	string	FALSE	FALSE	TRUE	TRUE
-$x = "0";	string	TRUE	FALSE	TRUE	FALSE
-$x = "-1";	string	FALSE	FALSE	TRUE	TRUE
-$x = "php";	string	FALSE	FALSE	TRUE	TRUE
-$x = "true";	string	FALSE	FALSE	TRUE	TRUE
-$x = "false";	string	FALSE	FALSE	TRUE	TRUE
-松散比较 ==
-TRUE	FALSE	1	0	-1	"1"	"0"	"-1"	NULL	array()	"php"	""
-TRUE	TRUE	FALSE	TRUE	FALSE	TRUE	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE
-FALSE	FALSE	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	TRUE	TRUE	FALSE	TRUE
-1	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE
-0	FALSE	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	TRUE	FALSE	TRUE	TRUE
--1	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE
-"1"	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE
-"0"	FALSE	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE
-"-1"	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE
-NULL	FALSE	TRUE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	TRUE	FALSE	TRUE
-array()	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	TRUE	FALSE	FALSE
-"php"	TRUE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE
-""	FALSE	TRUE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	TRUE
-严格比较 ===
-TRUE	FALSE	1	0	-1	"1"	"0"	"-1"	NULL	array()	"php"	""
-TRUE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE
-FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE
-1	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE
-0	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE
--1	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE
-"1"	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE
-"0"	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE
-"-1"	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE
-NULL	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE
-array()	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE
-"php"	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE
-""	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><em>$x = "";</em></td>
+      <td><span class="type"><a href="language.types.string.php" class="type string">string</a></span></td>
+      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>FALSE</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><em>$x = null;</em></td>
+      <td><span class="type"><a href="language.types.null.php" class="type NULL">NULL</a></span></td>
+      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>FALSE</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><em>var $x;</em></td>
+      <td><span class="type"><a href="language.types.null.php" class="type NULL">NULL</a></span></td>
+      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>FALSE</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><var class="varname"><var class="varname">$x</var></var> is undefined</td>
+      <td><span class="type"><a href="language.types.null.php" class="type NULL">NULL</a></span></td>
+      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>FALSE</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><em>$x = array();</em></td>
+      <td><span class="type"><a href="language.types.array.php" class="type array">array</a></span></td>
+      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>FALSE</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><em>$x = false;</em></td>
+      <td><span class="type"><a href="language.types.boolean.php" class="type boolean">boolean</a></span></td>
+      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>FALSE</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><em>$x = true;</em></td>
+      <td><span class="type"><a href="language.types.boolean.php" class="type boolean">boolean</a></span></td>
+      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>TRUE</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><em>$x = 1;</em></td>
+      <td><span class="type"><a href="language.types.integer.php" class="type integer">integer</a></span></td>
+      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>TRUE</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><em>$x = 42;</em></td>
+      <td><span class="type"><a href="language.types.integer.php" class="type integer">integer</a></span></td>
+      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>TRUE</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><em>$x = 0;</em></td>
+      <td><span class="type"><a href="language.types.integer.php" class="type integer">integer</a></span></td>
+      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>FALSE</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><em>$x = -1;</em></td>
+      <td><span class="type"><a href="language.types.integer.php" class="type integer">integer</a></span></td>
+      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>TRUE</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><em>$x = "1";</em></td>
+      <td><span class="type"><a href="language.types.string.php" class="type string">string</a></span></td>
+      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>TRUE</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><em>$x = "0";</em></td>
+      <td><span class="type"><a href="language.types.string.php" class="type string">string</a></span></td>
+      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>FALSE</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><em>$x = "-1";</em></td>
+      <td><span class="type"><a href="language.types.string.php" class="type string">string</a></span></td>
+      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>TRUE</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><em>$x = "php";</em></td>
+      <td><span class="type"><a href="language.types.string.php" class="type string">string</a></span></td>
+      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>TRUE</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><em>$x = "true";</em></td>
+      <td><span class="type"><a href="language.types.string.php" class="type string">string</a></span></td>
+      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>TRUE</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><em>$x = "false";</em></td>
+      <td><span class="type"><a href="language.types.string.php" class="type string">string</a></span></td>
+      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>FALSE</code></strong></td>
+      <td><strong><code>TRUE</code></strong></td>
+      <td><strong><code>TRUE</code></strong></td>
+     </tr>
+
+    </tbody>
+   
+  </table>
